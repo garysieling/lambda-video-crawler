@@ -9,7 +9,7 @@ const ffmpegDir = './exodus/bin/ffmpeg';
 
 exports.handler = function(event, context, callback) {
   const ytId = event.ytId;
-  const dataDir = event.dataDir || '/temp';
+  const dataDir = event.dataDir || '/tmp';
   const url = 'https://www.youtube.com/watch?v=' + ytId;
 
   exec(`./bin/youtube-dl \
