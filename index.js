@@ -5,11 +5,11 @@ const S3 = require('aws-sdk/clients/s3');
 const s3 = new AWS.S3();
 
 const exec = require('child_process').exec;
-const dataDir = process.env.DATA_DIR;
 const ffmpegDir = './exodus/bin/ffmpeg';
 
 exports.handler = function(event, context, callback) {
   const ytId = event.ytId;
+  const dataDir = event.dataDir || '/temp';
   const url = 'https://www.youtube.com/watch?v=' + ytId;
 
   exec(`./bin/youtube-dl \
