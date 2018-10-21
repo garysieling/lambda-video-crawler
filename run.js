@@ -1,4 +1,4 @@
-let { index } = require('./index');
-index(
+let { handler } = require('./index');
+handler(
   {ytId: ''}, null, console.log
 )

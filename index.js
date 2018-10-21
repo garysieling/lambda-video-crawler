@@ -8,7 +8,7 @@ const exec = require('child_process').exec;
 const dataDir = process.env.DATA_DIR;
 const ffmpegDir = './exodus/bin/ffmpeg';
 
-exports.index = function(event, context, callback) {
+exports.handler = function(event, context, callback) {
   const ytId = event.ytId;
   const url = 'https://www.youtube.com/watch?v=' + ytId;
 
