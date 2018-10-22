@@ -14,7 +14,7 @@ exports.handler = function(event, context, callback) {
     console.log(record.eventName);
     console.log('DynamoDB Record: %j', record.dynamodb);
 
-    const ytId = event.Keys.ytId.S;
+    const ytId = record.dynamodb.Keys.ytId.S;
     const dataDir = '/tmp';
     const url = 'https://www.youtube.com/watch?v=' + ytId;
 
