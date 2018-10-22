@@ -35,8 +35,6 @@ exports.handler = function(event, context, callback) {
     },function (resp) {
       console.log(arguments);
       console.log('Successfully uploaded package.');
-
-      callback(null, "Success!");
     });
   });
 }
