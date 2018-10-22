@@ -29,7 +29,7 @@ exports.handler = function(event, context, callback) {
 
     const data = fs.readFileSync(dataDir + '/data.info.json');
     s3.putObject({
-      Bucket: 'findlectures',
+      Bucket: 'findlectures-ytdl',
       Key: 'v' + ytId + '.json',
       Body: new Buffer(data, 'binary')
     },function (resp) {
