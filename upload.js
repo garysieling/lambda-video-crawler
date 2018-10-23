@@ -4,7 +4,6 @@ const parse = require('csv-parse');
 const async = require('async');
 const _ = require('lodash');
 
-
 const csv_filename = "ytId.csv";
 
 const AWS = require('aws-sdk')
@@ -17,12 +16,19 @@ parser = parse({
     delimiter : ','
 }, function(err, data) {
 
-data.forEach((item) => {
-	const row = {ytId: _.values(item)[0]}
-        docClient.put({TableName: 'findlectures-videos', Item: row}, (err, res) => {
-        if(err) console.log(err)
-	})
-})
+async.mapSeries(data,
+  (item, cb) => {
+    const row = {ytId: _.values(item)[0]}
+    console.log(row);
+    docClient.put({TableName: 'findlectures-videos', Item: row}, (err, res) => {
+      if(err) console.log(err)
+      console.log(res);
+      cb();
+    })
+  },
+  () => {
+    console.log('completed!!!');
+  })
 
 });
 rs.pipe(parser);
